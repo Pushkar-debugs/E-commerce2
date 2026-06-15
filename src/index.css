@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f7ff;
+  color: #2d2d2d;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
