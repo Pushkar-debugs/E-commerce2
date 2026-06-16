@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Navbar() {
   return (
     <div style={styles.navbar}>
-      <h2 style={styles.logo}>AuraCart</h2>
+      <h2 style={styles.logo}>Shopkart</h2>
 
       <div style={styles.menu}>
         <Link to="/" style={styles.link}>Home</Link>
@@ -23,6 +23,7 @@ export function Navbar() {
         <Link to="/contact" style={styles.link}>
           Contact
         </Link>
+        <br />
       </div>
     </div>
   );
@@ -30,7 +31,7 @@ export function Navbar() {
 
 const styles = {
   navbar: {
-    background: "linear-gradient(90deg, #6C63FF, #FF6B9A)",
+    background: "linear-gradient(90deg, blue, green)",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",

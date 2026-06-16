@@ -1,109 +1,130 @@
 export function Categories() {
+  const categories = [
+    { icon: "🎭", name: "Silicone Mask" },
+    { icon: "❄️", name: "AC" },
+    { icon: "🏠", name: "Appliances" },
+    { icon: "👜", name: "Bags" },
+
+    { icon: "💄", name: "Beauty" },
+    { icon: "💠", name: "Body" },
+    { icon: "📚", name: "Books" },
+    { icon: "📷", name: "Cameras" },
+
+    { icon: "👔", name: "Clothing" },
+    { icon: "💻", name: "Electronics" },
+    { icon: "🎭", name: "Fancy Dress" },
+    { icon: "👗", name: "Fashion" },
+
+    { icon: "👟", name: "Footwear" },
+    { icon: "🛋️", name: "Furniture" },
+    { icon: "💊", name: "Health Supplements" },
+    { icon: "🛋️", name: "Home & Furniture" },
+
+    { icon: "🏡", name: "Home Decor" },
+    { icon: "💠", name: "Home Furnishing" },
+    { icon: "🛠️", name: "Home Improvement" },
+    { icon: "💎", name: "Jewellery" },
+
+    { icon: "🍳", name: "Kitchen, Cookware & Serveware" },
+    { icon: "⌨️", name: "Laptop Accessories" },
+    { icon: "🎁", name: "Laptops" },
+    { icon: "📱", name: "Mobile Back Cover" },
+
+    { icon: "📲", name: "Mobiles" },
+    { icon: "🏷️", name: "Other" },
+    { icon: "⚽", name: "Sports" },
+    { icon: "📺", name: "Televisions" },
+
+    { icon: "🧸", name: "Toys" },
+    { icon: "🎁", name: "Vehicles" },
+    { icon: "✨", name: "Watch" },
+    { icon: "⌚", name: "Watches" },
+  ];
+
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Shop by Category</h1>
-      <p style={styles.subHeading}>
-        Explore thousands of products across our most popular collections.
-      </p>
 
-      <div style={styles.grid}>
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500"
-            alt="Fashion"
-            style={styles.image}
-          />
-          <h3>Fashion</h3>
-        </div>
-
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500"
-            alt="Electronics"
-            style={styles.image}
-          />
-          <h3>Electronics</h3>
-        </div>
-
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
-            alt="Shoes"
-            style={styles.image}
-          />
-          <h3>Shoes</h3>
-        </div>
-
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500"
-            alt="Beauty"
-            style={styles.image}
-          />
-          <h3>Beauty</h3>
-        </div>
-
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500"
-            alt="Home Decor"
-            style={styles.image}
-          />
-          <h3>Home Decor</h3>
-        </div>
-
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500"
-            alt="Accessories"
-            style={styles.image}
-          />
-          <h3>Accessories</h3>
-        </div>
+      {/* Header */}
+      <div style={styles.header}>
+        <h2 style={styles.title}>Shop By Category</h2>
+        <p style={styles.viewAll}>View All →</p>
       </div>
+
+      {/* Categories */}
+      <div style={styles.grid}>
+        {categories.map((item, index) => (
+          <div key={index} style={styles.card}>
+            <div style={styles.iconBox}>
+              {item.icon}
+            </div>
+
+            <p style={styles.name}>
+              {item.name}
+            </p>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 }
 
 const styles = {
   container: {
-    padding: "70px 40px",
-    backgroundColor: "#ffffff",
-    textAlign: "center",
+    background: "linear-gradient(to Bottom right , #470fc0, #0af244)",
+    
+    padding: "25px",
+    borderRadius: "12px",
+    fontFamily: "Arial",
   },
 
-  heading: {
-    fontSize: "42px",
-    color: "#2D2D2D",
-    marginBottom: "10px",
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "25px",
   },
 
-  subHeading: {
-    color: "#666",
-    fontSize: "18px",
-    marginBottom: "40px",
+  title: {
+    margin: 0,
+    fontSize: "32px",
+    fontWeight: "bold",
+    color: "#111",
+  },
+
+  viewAll: {
+    color: "#0066ff",
+    fontSize: "22px",
+    fontWeight: "bold",
+    cursor: "pointer",
   },
 
   grid: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "25px",
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "30px 20px",
   },
 
   card: {
-    width: "220px",
-    backgroundColor: "#F8F7FF",
-    borderRadius: "18px",
-    overflow: "hidden",
-    boxShadow: "0 6px 15px rgba(0,0,0,0.08)",
-    transition: "0.3s",
-    paddingBottom: "15px",
+    textAlign: "center",
   },
 
-  image: {
-    width: "100%",
-    height: "170px",
-    objectFit: "cover",
+  iconBox: {
+    width: "85px",
+    height: "85px",
+    margin: "auto",
+    backgroundColor: "#ececf1",
+    borderRadius: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "38px",
+  },
+
+  name: {
+    marginTop: "12px",
+    fontSize: "16px",
+    color: "#555",
+    lineHeight: "22px",
   },
 };

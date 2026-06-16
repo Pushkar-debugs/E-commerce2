@@ -1,151 +1,296 @@
+
 export function Contact() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Contact AuraCart</h1>
+    <div style={styles.page}>
+      <div style={styles.h}><h1> 
+        Contact Us 
+         </h1></div>
+      {/* CONTACT INFO */}
+      <div style={styles.card}>
 
-      <p style={styles.subHeading}>
-        We'd love to hear from you! Feel free to reach out with any questions,
-        feedback, or support requests.
-      </p>
+        <h1 style={styles.mainTitle}>
+          Get In Touch
+        </h1>
 
-      <div style={styles.wrapper}>
-        {/* Left Side */}
-        <div style={styles.infoCard}>
-          <h2 style={styles.title}>Get in Touch</h2>
+        <p style={styles.description}>
+          We'd love to hear from you! Whether you have a
+          question about orders, products, pricing, or
+          anything else — our team is ready to help.
+        </p>
 
-          <p>📍 Mumbai, Maharashtra, India</p>
-          <p>📧 support@auracart.com</p>
-          <p>📞 +91 98765 43210</p>
-          <p>🕒 Mon - Sat | 9:00 AM - 8:00 PM</p>
+        {/* Email */}
+        <div style={styles.infoRow}>
+          <div style={styles.iconBox}>✉️</div>
 
-          <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800"
-            alt="Office"
-            style={styles.image}
-          />
+          <div>
+            <h3 style={styles.infoTitle}>
+              Email
+            </h3>
+
+            <p style={styles.infoText}>
+              support@shopkart.com
+            </p>
+
+            <p style={styles.subText}>
+              We reply within 24-48 hours
+            </p>
+          </div>
         </div>
 
-        {/* Right Side */}
-        <div style={styles.formCard}>
-          <h2 style={styles.title}>Send a Message</h2>
+        {/* Phone */}
+        <div style={styles.infoRow}>
+          <div style={styles.iconBox}>📞</div>
+
+          <div>
+            <h3 style={styles.infoTitle}>
+              Phone
+            </h3>
+
+            <p style={styles.infoText}>
+              +91-XXXXXXXXXX
+            </p>
+
+            <p style={styles.subText}>
+              Mon-Sat, 9:00 AM - 7:00 PM IST
+            </p>
+          </div>
+        </div>
+
+        {/* Address */}
+        <div style={styles.infoRow}>
+          <div style={styles.iconBox}>📍</div>
+
+          <div>
+            <h3 style={styles.infoTitle}>
+              Office Address
+            </h3>
+
+            <p style={styles.infoText}>
+              [Your Business Address]
+            </p>
+
+            <p style={styles.subText}>
+              India
+            </p>
+          </div>
+        </div>
+
+        {/* Business Hours */}
+        <div style={styles.infoRow}>
+          <div style={styles.iconBox}>🕒</div>
+
+          <div>
+            <h3 style={styles.infoTitle}>
+              Business Hours
+            </h3>
+
+            <p style={styles.infoText}>
+              Monday - Saturday: 9:00 AM - 7:00 PM IST
+            </p>
+
+            <p style={styles.subText}>
+              Sunday: Closed
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      {/* MESSAGE FORM */}
+      <div style={styles.card}>
+
+        <h1 style={styles.mainTitle}>
+          Send Us a Message
+        </h1>
+
+        {/* Full Name */}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Full Name *
+          </label>
 
           <input
             type="text"
-            placeholder="Enter your name"
+            placeholder="Your full name"
             style={styles.input}
           />
+        </div>
+
+        {/* Email */}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Email Address *
+          </label>
 
           <input
             type="email"
-            placeholder="Enter your email"
+            placeholder="your@email.com"
             style={styles.input}
           />
+        </div>
+
+        {/* Subject */}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Subject
+          </label>
 
           <input
             type="text"
-            placeholder="Subject"
+            placeholder="What is this regarding?"
             style={styles.input}
           />
+        </div>
+
+        {/* Message */}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Message *
+          </label>
 
           <textarea
-            placeholder="Write your message..."
-            rows="6"
+            placeholder="Write your message here..."
             style={styles.textarea}
           ></textarea>
-
-          <button style={styles.button}>
-            Send Message
-          </button>
         </div>
+
+        {/* Button */}
+        <button style={styles.button}>
+          ✈️ Send Message
+        </button>
+
       </div>
+
     </div>
   );
 }
 
 const styles = {
-  container: {
-    padding: "70px 40px",
-    backgroundColor: "#F8F7FF",
-    minHeight: "100vh",
+  page: {
+    backgroundColor: "#f5f5f5",
+    padding: "25px",
+    fontFamily: "Arial",
   },
 
-  heading: {
-    textAlign: "center",
-    fontSize: "46px",
-    color: "#2D2D2D",
-    marginBottom: "10px",
+  h: {
+    fontSize: "48px",
+    marginBottom: "25px",
+    backgroundColor: "blue",
+    padding: "35px",
+    height: "80px",
+    color: "black",
+   
+    textAlign: "left",
+    },
+
+  card: {
+    backgroundColor: "white",
+    borderRadius: "22px",
+    padding: "35px",
+    marginBottom: "30px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
   },
 
-  subHeading: {
-    textAlign: "center",
+  mainTitle: {
+    fontSize: "48px",
+    marginBottom: "25px",
+    color: "#111",
+  },
+
+  description: {
+    fontSize: "25px",
     color: "#666",
-    fontSize: "18px",
-    marginBottom: "45px",
+    lineHeight: "42px",
+    marginBottom: "35px",
   },
 
-  wrapper: {
+  infoRow: {
+    display: "flex",
+    gap: "25px",
+    marginBottom: "35px",
+    alignItems: "center",
+  },
+
+  iconBox: {
+    width: "75px",
+    height: "75px",
+    borderRadius: "50%",
+    backgroundColor: "#eef2ff",
     display: "flex",
     justifyContent: "center",
-    gap: "35px",
-    flexWrap: "wrap",
+    alignItems: "center",
+    fontSize: "34px",
   },
 
-  infoCard: {
-    flex: 1,
-    minWidth: "320px",
-    backgroundColor: "white",
-    padding: "30px",
-    borderRadius: "20px",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.08)",
-    lineHeight: "35px",
+  infoTitle: {
+    fontSize: "34px",
+    margin: 0,
+    color: "#111",
+    aligntItems: "left",
+    alignContent: "left",
+    aligntext: "left",
+
   },
 
-  formCard: {
-    flex: 1,
-    minWidth: "320px",
-    backgroundColor: "white",
-    padding: "30px",
-    borderRadius: "20px",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.08)",
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
+  infoText: {
+    fontSize: "28px",
+    color: "#555",
+    marginTop: "10px",
+    marginBottom: "5px",
   },
 
-  title: {
-    color: "#6C63FF",
-    marginBottom: "15px",
+  subText: {
+    fontSize: "24px",
+    color: "#777",
+  },
+
+  formGroup: {
+    marginBottom: "28px",
+    textAlign: "left",
+  },
+
+  label: {
+    display: "block",
+    fontSize: "28px",
+    fontWeight: "bold",
+    marginBottom: "12px",
+    color: "#111",
   },
 
   input: {
-    padding: "14px",
-    borderRadius: "10px",
+    width: "100%",
+    padding: "22px",
+    fontSize: "24px",
+    borderRadius: "14px",
     border: "1px solid #ddd",
-    fontSize: "16px",
+    backgroundColor: "#f9fafb",
+    outline: "none",
+    boxSizing: "border-box",
   },
 
   textarea: {
-    padding: "14px",
-    borderRadius: "10px",
+    width: "100%",
+    height: "220px",
+    padding: "22px",
+    fontSize: "24px",
+    borderRadius: "14px",
     border: "1px solid #ddd",
-    fontSize: "16px",
+    backgroundColor: "#f9fafb",
     resize: "none",
+    outline: "none",
+    boxSizing: "border-box",
   },
 
   button: {
-    background: "linear-gradient(90deg, #6C63FF, #FF6B9A)",
-    color: "white",
+    width: "100%",
+    padding: "22px",
     border: "none",
-    padding: "14px",
-    borderRadius: "30px",
-    fontSize: "16px",
+    borderRadius: "14px",
+    backgroundColor: "#0d6efd",
+    color: "white",
+    fontSize: "30px",
     fontWeight: "bold",
     cursor: "pointer",
-  },
-
-  image: {
-    width: "100%",
-    marginTop: "20px",
-    borderRadius: "15px",
+    marginTop: "10px",
   },
 };

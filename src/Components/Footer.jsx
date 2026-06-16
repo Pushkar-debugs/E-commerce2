@@ -1,92 +1,164 @@
+
+
 export function Footer() {
   return (
-    <footer style={styles.footer}>
-      <div style={styles.container}>
-        {/* Brand */}
-        <div style={styles.section}>
-          <h2 style={styles.logo}>AuraCart</h2>
-          <p style={styles.text}>
-            Your one-stop destination for fashion, electronics, lifestyle, and
-            premium accessories. Shop smarter with AuraCart.
-          </p>
+    <div style={styles.footer}>
+      
+      {/* Top Section */}
+      <div style={styles.topSection}>
+        
+        {/* About */}
+        <div>
+          <h3 style={styles.heading}>ABOUT</h3>
+          <p style={styles.text}>Contact Us</p>
+          <p style={styles.text}>About Us</p>
+          <p style={styles.text}>Careers</p>
+          <p style={styles.text}>ShopKart Stories</p>
+          <p style={styles.text}>Press</p>
+          <p style={styles.text}>Corporate Information</p>
         </div>
 
-        {/* Quick Links */}
-        <div style={styles.section}>
-          <h3 style={styles.title}>Quick Links</h3>
-          <p>Home</p>
-          <p>Products</p>
-          <p>About</p>
-          <p>Contact</p>
+        {/* Help */}
+        <div>
+          <h3 style={styles.heading}>HELP</h3>
+          <p style={styles.text}>Payments</p>
+          <p style={styles.text}>Shipping</p>
+          <p style={styles.text}>Cancellation & Returns</p>
+          <p style={styles.text}>FAQ</p>
+
+{/* Social + App */}
+          <h3 style={{ ...styles.heading, marginTop: "30px" }}>
+            SOCIAL
+          </h3>
+
+          <div style={styles.socialIcons}>
+            <span style={styles.icon}>📘</span>
+            <span style={styles.icon}>🐦</span>
+            <span style={styles.icon}>📷</span>
+            <span style={styles.icon}>▶️</span>
+          </div>
+
+          <h3 style={{ ...styles.heading, marginTop: "30px" }}>
+            DOWNLOAD APP
+          </h3>
+
+          <button style={styles.button}>📱 Google Play</button>
+          <button style={styles.button}>🍎 App Store</button>
         </div>
 
-        {/* Categories */}
-        <div style={styles.section}>
-          <h3 style={styles.title}>Categories</h3>
-          <p>Fashion</p>
-          <p>Electronics</p>
-          <p>Beauty</p>
-          <p>Accessories</p>
+        {/* Policy */}
+        <div>
+          <h3 style={styles.heading}>POLICY</h3>
+          <p style={styles.text}>Return Policy</p>
+          <p style={styles.text}>Terms of Use</p>
+          <p style={styles.text}>Security</p>
+          <p style={styles.text}>Privacy</p>
+          <p style={styles.text}>Shipping Policy</p>
         </div>
 
-        {/* Contact */}
-        <div style={styles.section}>
-          <h3 style={styles.title}>Contact</h3>
-          <p>📧 support@auracart.com</p>
-          <p>📞 +91 98765 43210</p>
-          <p>📍 Mumbai, Maharashtra</p>
-        </div>
       </div>
 
-      <hr style={styles.line} />
+      {/* Bottom Section */}
+      <div style={styles.bottom}>
+        <div style={styles.features}>
+          <span>🔒 Secure Payments</span>
+          <span>↩️ Easy Returns</span>
+          <span>✅ Genuine Products</span>
+        </div>
 
-      <p style={styles.copyright}>
-        © 2026 AuraCart. All Rights Reserved.
-      </p>
-    </footer>
+        <div style={styles.bottomLinks}>
+          <span>Terms</span>
+          <span>•</span>
+          <span>Privacy</span>
+          <span>•</span>
+          <span>Returns</span>
+          <span>•</span>
+          <span>© 2026 ShopKart</span>
+        </div>
+      </div>
+    </div>
   );
 }
 
 const styles = {
   footer: {
-    background: "linear-gradient(90deg, #6C63FF, #FF6B9A)",
+    backgroundColor: "#0b1020",
     color: "white",
-    padding: "50px 40px 20px",
-    marginTop: "50px",
+    padding: "30px 20px",
+    fontFamily: "Arial",
   },
 
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    gap: "30px",
+  topSection: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    gap: "40px",
+    
   },
 
-  section: {
-    width: "220px",
-  },
-
-  logo: {
-    fontSize: "30px",
-    marginBottom: "15px",
-  },
-
-  title: {
-    marginBottom: "15px",
+  heading: {
+    fontSize: "20px",
+    marginBottom: "20px",
+    fontWeight: "bold",
   },
 
   text: {
-    lineHeight: "26px",
+    color: "#b0b0b0",
+    marginBottom: "15px",
+    fontSize: "16px",
+    cursor: "pointer",
   },
 
-  line: {
-    marginTop: "30px",
-    border: "1px solid rgba(255,255,255,0.3)",
+  socialIcons: {
+    display: "flex",
+    gap: "10px",
   },
 
-  copyright: {
-    textAlign: "center",
-    marginTop: "20px",
-    fontSize: "15px",
+  icon: {
+    width: "45px",
+    height: "45px",
+    backgroundColor: "#1b2235",
+    borderRadius: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "22px",
+    cursor: "pointer",
+  },
+
+  button: {
+    width: "100%",
+    padding: "15px",
+    marginTop: "10px",
+    border: "none",
+    borderRadius: "12px",
+    backgroundColor: "#1b2235",
+    color: "white",
+    fontSize: "18px",
+    cursor: "pointer",
+
+  },
+
+  bottom: {
+    marginTop: "40px",
+    borderTop: "1px solid #222",
+    paddingTop: "20px",
+    textAlign: "right",
+  },
+
+  features: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+   
+    marginBottom: "20px",
+    color: "#cfcfcf",
+  },
+
+  bottomLinks: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+   
+    color: "#999",
   },
 };

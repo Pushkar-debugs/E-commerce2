@@ -4,57 +4,36 @@ import { supabase } from "../supabase";
 export function Add() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
-    if (!name || !price || !image) {
+    if (!name || !price || !imageUrl) {
       alert("Please fill all fields");
       return;
     }
 
     setLoading(true);
 
-    // Unique file name
-    const fileName = `${Date.now()}-${image.name}`;
-
-    // Upload image to Supabase Storage
-    const { error: uploadError } = await supabase.storage
-      .from("product-images")
-      .upload(fileName, image);
-
-   if (uploadError) {
-  console.log(uploadError);
-  alert(uploadError.message);
-  setLoading(false);
-  return;
-}
-
-    // Get public URL
-    const { data } = supabase.storage
-      .from("product-images")
-      .getPublicUrl(fileName);
-
-    const imageUrl = data.publicUrl;
-
-    // Save in database
-    const { error } = await supabase.from("products").insert({
-      name: name,
-      price: Number(price),
-      image: imageUrl,
-    });
+    const { error } = await supabase
+      .from("products")
+      .insert([
+        {
+          name,
+          price: Number(price),
+          image: imageUrl,
+        },
+      ]);
 
     if (error) {
-      alert("Failed to save product");
+      console.log(error);
+      alert(error.message);
     } else {
       alert("Product Added Successfully!");
 
       setName("");
       setPrice("");
-      setImage(null);
-
-      // file input clear karne ke liye page reload ki zarurat nahi
-      document.getElementById("product-image").value = "";
+      setImageUrl("");
     }
 
     setLoading(false);
@@ -82,23 +61,30 @@ export function Add() {
         />
 
         <input
-          id="product-image"
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
+          type="text"
+          placeholder="Image URL"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
           style={styles.input}
         />
 
-        {image && (
+        {imageUrl && (
           <img
-            src={URL.createObjectURL(image)}
+            src={imageUrl}
             alt="Preview"
             style={styles.preview}
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
           />
         )}
 
-        <button onClick={handleSubmit} style={styles.button}>
-          {loading ? "Uploading..." : "Add Product"}
+        <button
+          onClick={handleSubmit}
+          style={styles.button}
+          disabled={loading}
+        >
+          {loading ? "Adding..." : "Add Product"}
         </button>
       </div>
     </div>
@@ -129,6 +115,7 @@ const styles = {
     borderRadius: "10px",
     border: "1px solid #ccc",
     fontSize: "16px",
+    boxSizing: "border-box",
   },
 
   preview: {

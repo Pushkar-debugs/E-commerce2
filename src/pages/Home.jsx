@@ -8,10 +8,12 @@ export function Home() {
   return (
     <>
       <Hero />
+      <br />
       <Categories />
-      <Offers />
+      <br />
       <ProductCard />
-      <Testimonials />
+      <br />
+  
     </>
   );
 }
