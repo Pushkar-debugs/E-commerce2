@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
@@ -8,37 +8,44 @@ import { Products } from "./pages/Products";
 import { Add } from "./pages/Add";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
+import Login   from './pages/Login'
+import Signup  from './pages/Signup'
+import Protected from './pages/Protected'
 
 function App() {
+  const location = useLocation();
+  const hideOn = ['/login', '/signup'];
+
   return (
     <>
-      <Navbar />
+      {!hideOn.includes(location.pathname) && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Protected><Home /></Protected>} />
 
         <Route
           path="/products"
-          element={<Products />}
+          element={<Protected><Products /></Protected>}
         />
-
+         <Route path="/login"    element={<Login />} />
+          <Route path="/signup"   element={<Signup />} />
         <Route
           path="/add"
-          element={<Add />}
+          element={<Protected><Add /></Protected>}
         />
 
         <Route
           path="/about"
-          element={<About />}
+          element={<Protected><About /></Protected>}
         />
 
         <Route
           path="/contact"
-          element={<Contact />}
+          element={<Protected><Contact /></Protected>}
         />
       </Routes>
 
-      <Footer />
+      {!hideOn.includes(location.pathname) && <Footer />}
     </>
   );
 }

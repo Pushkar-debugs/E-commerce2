@@ -1,6 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase";
 
 export function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    let mounted = true;
+    supabase.auth.getSession().then(({ data }) => {
+      if (!mounted) return;
+      setUser(data.session?.user ?? null);
+    });
+
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      mounted = false;
+      // unsubscribe if available
+      try { data?.subscription?.unsubscribe(); } catch (e) {}
+    };
+  }, []);
+
+  // hide navbar on auth pages (after hooks)
+  const hideOn = ['/login', '/signup'];
+  if (hideOn.includes(location.pathname)) return null;
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    navigate('/login');
+  };
+
   return (
     <div style={styles.navbar}>
       <h2 style={styles.logo}>Shopkart</h2>
@@ -23,7 +56,12 @@ export function Navbar() {
         <Link to="/contact" style={styles.link}>
           Contact
         </Link>
-        <br />
+
+        {user ? (
+          <button onClick={signOut} style={styles.signout}>Sign out</button>
+        ) : (
+          <Link to="/login" style={styles.link}>Sign in</Link>
+        )}
       </div>
     </div>
   );
